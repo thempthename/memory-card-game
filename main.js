@@ -12,18 +12,18 @@ let secondCard = false;
 
 //Items array
 const items = [
-  { name: "bee", image: "../img/angular.png"},
-  { name: "crocodile", image: "../img/aurelia.png" },
-  { name: "macaw", image: "../img/backbone.png" },
-  { name: "gorilla", image: "../img/ember.png" },
-  { name: "tiger", image: "../img/js-badge.png" },
-  { name: "monkey", image: "../img/react.png" },
-  { name: "chameleon", image: "../img/vue.png" },
-  { name: "piranha", image: "../img/python.png" },
-  { name: "anaconda", image: "../img/ruby.png" },
-  { name: "sloth", image: "../img/swift.png" },
-  { name: "cockatoo", image: "../img/c++.png" },
-  { name: "toucan", image: "../img/dart.png" },
+  { name: "angular", image: "../img/angular.png"},
+  { name: "aurelia", image: "../img/aurelia.png" },
+  { name: "backbone", image: "../img/backbone.png" },
+  { name: "ember", image: "../img/ember.png" },
+  { name: "js-badge", image: "../img/js-badge.png" },
+  { name: "react", image: "../img/react.png" },
+  { name: "vue", image: "../img/vue.png" },
+  { name: "python", image: "../img/python.png" },
+  { name: "ruby", image: "../img/ruby.png" },
+  { name: "swift", image: "../img/swift.png" },
+  { name: "c++", image: "../img/c++.png" },
+  { name: "dart", image: "../img/dart.png" },
 ];
 
 //Initial Time
@@ -33,7 +33,7 @@ let seconds = 0,
 let movesCount = 0,
   winCount = 0;
 
-//For timer
+//For timer ... Увеличивает значения таймера (минуты и секунды) и обновляет отображаемое время соответственно.*************************
 const timeGenerator = () => {
   seconds += 1;
   //minutes logic
@@ -47,13 +47,13 @@ const timeGenerator = () => {
   timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
 };
 
-//For calculating moves
+//For calculating moves  ...  Увеличивает счёт ходов и обновляет отображаемый счёт. **************************
 const movesCounter = () => {
   movesCount += 1;
   moves.innerHTML = `<span>Moves:</span>${movesCount}`;
 };
 
-//Pick random objects from the items array
+//Pick random objects from the items array ..  Создаёт массив случайных объектов карт из массива items. Выбирает объекты случайным образом и обеспечивает наличие пар для игры "Найди пару".******************
 const generateRandom = (size = 4) => {
   //temporary array
   let tempArray = [...items];
@@ -71,6 +71,7 @@ const generateRandom = (size = 4) => {
   return cardValues;
 };
 
+// Генерирует игровую сетку, создавая HTML-элементы для каждой карты. Создаёт пары карт с изображениями и устанавливает пользовательские атрибуты для их последующего сопоставления.***************************
 const matrixGenerator = (cardValues, size = 4) => {
   gameContainer.innerHTML = "";
   cardValues = [...cardValues, ...cardValues];
@@ -145,7 +146,7 @@ const matrixGenerator = (cardValues, size = 4) => {
   });
 };
 
-//Start game
+//Start game ..  Начинает игру при нажатии. Скрывает элементы управления, запускает таймер, сбрасывает счёт ходов и создаёт начальный набор карт.******************
 startButton.addEventListener("click", () => {
   movesCount = 0;
   seconds = 0;
@@ -161,7 +162,7 @@ startButton.addEventListener("click", () => {
   initializer();
 });
 
-//Stop game
+//Stop game .. Останавливает игру при нажатии. Снова показывает кнопки управления и останавливает таймер.***************
 stopButton.addEventListener(
   "click",
   (stopGame = () => {
@@ -172,7 +173,7 @@ stopButton.addEventListener(
   })
 );
 
-//Initialize values and func calls
+//Initialize values and func calls .. Инициализирует игру путём сброса различных значений, генерации случайных значений карт и создания игровой сетки. **************
 const initializer = () => {
   result.innerText = "";
   winCount = 0;
